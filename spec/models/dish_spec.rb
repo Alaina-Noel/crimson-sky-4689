@@ -63,7 +63,8 @@ RSpec.describe Dish, type: :model do
 
      describe '#list_ingredients_uniq_ordered' do
       it 'can give a unique list of all ingredients a chef uses for their dishes' do
-        expect(@alaina.dishes.list_ingredients_uniq_ordered.pluck(:name)).to eq(["salt", "garlic", "tomato"])
+
+        expect(@alaina.dishes.list_ingredients_uniq_ordered.keys).to eq(["garlic", "salmon", "salt"])
       end
      end
 
