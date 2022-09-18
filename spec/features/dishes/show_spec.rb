@@ -22,7 +22,7 @@ RSpec.describe 'dishes show page', type: :feature do
           @basilsoup_tomato = DishIngredient.create!(dish_id: @basil_soup.id , ingredient_id: @tomato.id)
           @basilsoup_garlic = DishIngredient.create!(dish_id: @basil_soup.id , ingredient_id: @garlic.id)
 
-          @chickenfeta_salt = DishIngredient.create!(dish_id: @chicken.id , ingredient_id: @salt.id)
+          @chickenfeta_salt = DishIngredient.create!(dish_id: @chicken_feta.id , ingredient_id: @salt.id)
           @chickenfeta_garlic = DishIngredient.create!(dish_id: @chicken_feta.id , ingredient_id: @garlic.id)
 
           @broccolibake_salt = DishIngredient.create!(dish_id: @broccoli_bake.id , ingredient_id: @salt.id)
@@ -45,10 +45,15 @@ RSpec.describe 'dishes show page', type: :feature do
 
         expect(page).to have_content("Dish Name: #{@basil_soup.name}")
         expect(page).to have_content("Description: #{@basil_soup.description}")
-        expect(page).to have_content("salt")
-        expect(page).to have_content("garlic")
-        expect(page).to have_content("tomato")
-        expect(page).to have_content("Chef's Name: Alaina")
+        within('#ingredients_list') do
+          expect(page).to have_content("salt")
+          expect(page).to have_content("garlic")
+          expect(page).to have_content("tomato")
+          expect(page).to_not have_content("yogurt")
+        end
+
+
+        # expect(page).to have_content("Chef's Name: Alaina")
       end
 
       xit 'I see the total calorie count for that dish.' do
