@@ -13,7 +13,7 @@ RSpec.describe 'dishes show page', type: :feature do
 
           @salt = Ingredient.create!(name: "salt", calories: 100)
           @chicken = Ingredient.create!(name: "chicken", calories: 200)
-          @garlic = Ingredient.create!(name: "garlice", calories: 20)
+          @garlic = Ingredient.create!(name: "garlic", calories: 20)
           @yogurt = Ingredient.create!(name: "yogurt", calories: 115)
           @salmon = Ingredient.create!(name: "salmon", calories: 175)
           @tomato = Ingredient.create!(name: "tomato", calories: 50)
@@ -21,7 +21,6 @@ RSpec.describe 'dishes show page', type: :feature do
           @basilsoup_salt = DishIngredient.create!(dish_id: @basil_soup.id , ingredient_id: @salt.id)
           @basilsoup_tomato = DishIngredient.create!(dish_id: @basil_soup.id , ingredient_id: @tomato.id)
           @basilsoup_garlic = DishIngredient.create!(dish_id: @basil_soup.id , ingredient_id: @garlic.id)
-
 
           @chickenfeta_salt = DishIngredient.create!(dish_id: @chicken.id , ingredient_id: @salt.id)
           @chickenfeta_garlic = DishIngredient.create!(dish_id: @chicken_feta.id , ingredient_id: @garlic.id)
@@ -39,18 +38,21 @@ RSpec.describe 'dishes show page', type: :feature do
 #salmon used one time
 #yogurt used not at all
 
-
-          # visit "/dishes/#{@basil_soup.id}"
+          visit "/dishes/#{@basil_soup.id}"
         end
 
-     xit 'I see the dishs name and description, a list of ingredients for that dish, and I see the chefs name.' do
+      it 'I see the dishs name and description, a list of ingredients for that dish, and I see the chefs name.' do
 
-        expect(page).to have_content('SomeonesName')
-
+        expect(page).to have_content("Dish Name: #{@basil_soup.name}")
+        expect(page).to have_content("Description: #{@basil_soup.description}")
+        expect(page).to have_content("salt")
+        expect(page).to have_content("garlic")
+        expect(page).to have_content("tomato")
+        expect(page).to have_content("Chef's Name: Alaina")
       end
 
       xit 'I see the total calorie count for that dish.' do
-        expect(page).to have_content('Total Calorie Count: ')
+        expect(page).to have_content("Total Calorie Count: #{@basil_soup.total_calorie_count}")
       end
 
     end
