@@ -6,3 +6,11 @@
 <% end %>
 </ul>
 
+<p> <%= @chef.name %>'s Most Popular Ingredients</p>
+<p> <ol id="popular_ingredients_list"> <% @chef.dishes.list_ingredients_uniq_ordered.each do |ingredient| %></p>
+<li> <%= ingredient.ing_name %> 
+<% end %>
+</ol>
+
+
+

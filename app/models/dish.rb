@@ -11,4 +11,8 @@ class Dish < ApplicationRecord
   def self.list_ingredients_uniq
     self.select("ingredients.name as ing_name").joins(:ingredients).distinct
   end
+
+  def self.list_ingredients_uniq_ordered
+    require 'pry' ; binding.pry
+  end
 end

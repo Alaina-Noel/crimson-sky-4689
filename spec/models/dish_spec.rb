@@ -58,7 +58,12 @@ RSpec.describe Dish, type: :model do
       it 'can give a unique list of all ingredients a chef uses for their dishes' do
         expect(@alaina.dishes.list_ingredients_uniq.pluck(:name)).to eq(["Broccoli Bake", "Chicken Feta", "Perfect Grilled Salmon", "Tomato Basil Soup"])
         # expect(@alaina.dishes.list_ingredients_uniq).to eq([@galic, @salmon, @salt, @tomato])
+      end
+     end
 
+     describe '#list_ingredients_uniq_ordered' do
+      it 'can give a unique list of all ingredients a chef uses for their dishes' do
+        expect(@alaina.dishes.list_ingredients_uniq_ordered.pluck(:name)).to eq(["salt", "garlic", "tomato"])
       end
      end
 

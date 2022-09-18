@@ -43,16 +43,18 @@ RSpec.describe 'chefs ingredients index page', type: :feature do
           expect(page).to have_content("garlic")
           expect(page).to have_content("tomato")
           expect(page).to have_content("salmon")
+          save_and_open_page
           expect(page).to_not have_content("yogurt")
         end
       end
 
-      xit "I see the three most popular ingredients that the chef uses in their dishes" do
+      it "I see the three most popular ingredients that the chef uses in their dishes" do
         #(Popularity is based off of how many dishes use that ingredient)
-        expect(page).to have_content('Add a Pet to this Application')
-        expect(page).to have_content('Search for pet by name:')
-        expect(page).to_not have_content('Search for pet by name:')
-
+        within('#popular_ingredients_list') do #change to double quotes in parenthesis
+          expect("salt").to appear_before('garlic')
+          expect("garlic").to appear_before('tomato')
+          expect(page).to_not have_content("salmon")
+        end
       end
 
     end
