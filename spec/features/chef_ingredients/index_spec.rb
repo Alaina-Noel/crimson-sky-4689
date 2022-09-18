@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe 'chefs show page', type: :feature do
+RSpec.describe 'chefs ingredients index page', type: :feature do
   describe 'As a visitor' do
-    describe 'When I visit the show page' do
+    describe 'When I visit the chefs ing index page' do
         before :each do
           @alaina = Chef.create!(name: "Alaina")
           @mallory = Chef.create!(name: "Mallory")
@@ -33,16 +33,19 @@ RSpec.describe 'chefs show page', type: :feature do
           @perfectsalmon_salmon = DishIngredient.create!(dish_id: @perfect_salmon.id , ingredient_id: @salmon.id)
           @perfectsalmon_salt = DishIngredient.create!(dish_id: @perfect_salmon.id , ingredient_id: @salt.id)
 
-          visit "/chefs/#{@alaina.id}"
+          visit "/chefs/#{@alaina.id}/ingredients"
         end
 
-      it 'I see the name of that chef & a link to view a list of all ingredients that this chef uses in their dishes' do
-        expect(page).to have_link("#{@alaina.name}'s Ingredients")
+      xit "I can see a unique list of names of all the ingredients that this chef uses" do
+        expect(current_path).to eq("/chefs/#{@alaina.id}/ingredients")
       end
 
-      it "When I click on that link I'm taken to a chef's ingredient index page" do
-        click_link("#{@alaina.name}'s Ingredients")
-        expect(current_path).to eq("/chefs/#{@alaina.id}/ingredients")
+      xit "I see the three most popular ingredients that the chef uses in their dishes" do
+        #(Popularity is based off of how many dishes use that ingredient)
+        expect(page).to have_content('Add a Pet to this Application')
+        expect(page).to have_content('Search for pet by name:')
+        expect(page).to_not have_content('Search for pet by name:')
+
       end
 
     end
