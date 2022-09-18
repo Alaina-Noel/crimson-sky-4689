@@ -7,4 +7,8 @@ class Dish < ApplicationRecord
   def total_calorie_count
     dish_ingredients.joins(:ingredient).sum(:calories)
   end
+
+  def self.list_ingredients_uniq
+    self.select("ingredients.name as ing_name").joins(:ingredients).distinct
+  end
 end

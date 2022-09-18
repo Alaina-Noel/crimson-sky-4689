@@ -1,9 +1,8 @@
 <h1>Chef Ingredients Index Page</h1>
 
 <p> <%= @chef.name %>'s Ingredients</p>
-<p> <% @chef.dishes.list_ingredients_uniq.each do |ingredient| %></p>
-<ul id="ingredients_list">
-<li> <%= ingredient.name %> 
-</ul>
+<p> <ul id="ingredients_list"> <% @chef.dishes.list_ingredients_uniq.each do |ingredient| %></p>
+<li> <%= ingredient.ing_name %> 
 <% end %>
+</ul>
 

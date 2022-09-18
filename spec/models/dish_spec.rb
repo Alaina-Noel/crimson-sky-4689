@@ -19,6 +19,7 @@ RSpec.describe Dish, type: :model do
         @chicken_feta = @alaina.dishes.create!(name: "Chicken Feta", description: "Chicken with Yogurt Feta Sauce")
         @broccoli_bake = @alaina.dishes.create!(name: "Broccoli Bake", description: "Tomato & Broccoli Baked to Perfection")
         @perfect_salmon = @alaina.dishes.create!(name: "Perfect Grilled Salmon", description: "Science backed perfectly grilled salmon with dill sauce")
+        @pizza = @mallory.dishes.create!(name: "Tomato Pizza", description: "Pizza")
 
         @salt = Ingredient.create!(name: "salt", calories: 100)
         @chicken = Ingredient.create!(name: "chicken", calories: 200)
@@ -40,6 +41,8 @@ RSpec.describe Dish, type: :model do
 
         @perfectsalmon_salmon = DishIngredient.create!(dish_id: @perfect_salmon.id , ingredient_id: @salmon.id)
         @perfectsalmon_salt = DishIngredient.create!(dish_id: @perfect_salmon.id , ingredient_id: @salt.id)
+
+        @pizza_tomato = DishIngredient.create!(dish_id: @pizza.id , ingredient_id: @tomato.id)
   end
 
 
@@ -53,8 +56,9 @@ RSpec.describe Dish, type: :model do
 
     describe '#list_ingredients_uniq' do
       it 'can give a unique list of all ingredients a chef uses for their dishes' do
- 
-       expect(@alaina.dishes.list_ingredients_uniq).to eq([@salt, @chicken, @garlic, @tomato, @salmon])
+        expect(@alaina.dishes.list_ingredients_uniq.pluck(:name)).to eq(["Broccoli Bake", "Chicken Feta", "Perfect Grilled Salmon", "Tomato Basil Soup"])
+        # expect(@alaina.dishes.list_ingredients_uniq).to eq([@galic, @salmon, @salt, @tomato])
+
       end
      end
 

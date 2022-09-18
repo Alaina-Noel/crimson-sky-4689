@@ -37,7 +37,6 @@ RSpec.describe 'chefs ingredients index page', type: :feature do
         end
         
         it "I can see a unique list of names of all the ingredients that this chef uses" do
-          save_and_open_page
         expect(current_path).to eq("/chefs/#{@alaina.id}/ingredients")
         within('#ingredients_list') do
           expect(page).to have_content("salt")
