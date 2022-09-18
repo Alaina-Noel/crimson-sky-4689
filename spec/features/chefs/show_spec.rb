@@ -37,13 +37,12 @@ RSpec.describe 'chefs show page', type: :feature do
         end
 
       it 'I see the name of that chef & a link to view a list of all ingredients that this chef uses in their dishes' do
-save_and_open_page
         expect(page).to have_link("#{@alaina.name}'s Ingredients")
       end
 
-      xit "When I click on that link I'm taken to a chef's ingredient index page and I can see a unique list of names of all the ingredients that this chef uses" do
-        expect(page).to have_content('Add a Pet to this Application')
-        expect(page).to have_content('Search for pet by name:')
+      it "When I click on that link I'm taken to a chef's ingredient index page and I can see a unique list of names of all the ingredients that this chef uses" do
+        click_link("#{@alaina.name}'s Ingredients")
+        expect(current_path).to eq("/chefs/#{@alaina.id}/ingredients")
       end
 
       xit "I see the three most popular ingredients that the chef uses in their dishes" do
