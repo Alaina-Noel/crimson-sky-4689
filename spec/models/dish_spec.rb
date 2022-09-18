@@ -50,6 +50,15 @@ RSpec.describe Dish, type: :model do
       expect(@basil_soup.total_calorie_count).to eq(170)
      end
     end
+
+    describe '#list_ingredients_uniq' do
+      it 'can give a unique list of all ingredients a chef uses for their dishes' do
+ 
+       expect(@alaina.dishes.list_ingredients_uniq).to eq([@salt, @chicken, @garlic, @tomato, @salmon])
+      end
+     end
+
+
   end
 
 end
