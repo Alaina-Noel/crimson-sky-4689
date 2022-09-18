@@ -51,9 +51,7 @@ RSpec.describe 'dishes show page', type: :feature do
           expect(page).to have_content("tomato")
           expect(page).to_not have_content("yogurt")
         end
-
-
-        # expect(page).to have_content("Chef's Name: Alaina")
+        expect(page).to have_content("Chef's Name: Alaina")
       end
 
       xit 'I see the total calorie count for that dish.' do
