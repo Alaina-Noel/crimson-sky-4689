@@ -62,9 +62,3 @@ RSpec.describe 'dishes show page', type: :feature do
     end
   end
   
-  
-  #salt is used 4 times
-  #garlic is used 3 times
-  # tomato is used 2 times
-  #salmon used one time
-  #yogurt used not at all

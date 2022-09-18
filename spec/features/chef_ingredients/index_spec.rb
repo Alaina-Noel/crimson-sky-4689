@@ -35,9 +35,17 @@ RSpec.describe 'chefs ingredients index page', type: :feature do
 
           visit "/chefs/#{@alaina.id}/ingredients"
         end
-
-      xit "I can see a unique list of names of all the ingredients that this chef uses" do
+        
+        it "I can see a unique list of names of all the ingredients that this chef uses" do
+          save_and_open_page
         expect(current_path).to eq("/chefs/#{@alaina.id}/ingredients")
+        within('#ingredients_list') do
+          expect(page).to have_content("salt")
+          expect(page).to have_content("garlic")
+          expect(page).to have_content("tomato")
+          expect(page).to have_content("salmon")
+          expect(page).to_not have_content("yogurt")
+        end
       end
 
       xit "I see the three most popular ingredients that the chef uses in their dishes" do
@@ -51,3 +59,10 @@ RSpec.describe 'chefs ingredients index page', type: :feature do
     end
   end
 end
+
+
+  #salt is used 4 times
+  #garlic is used 3 times
+  # tomato is used 2 times
+  #salmon used one time
+  #yogurt used not at all
