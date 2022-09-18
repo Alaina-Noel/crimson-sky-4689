@@ -54,6 +54,7 @@ RSpec.describe 'chefs ingredients index page', type: :feature do
           expect("salt").to appear_before('garlic')
           expect("garlic").to appear_before('tomato')
           expect(page).to_not have_content("salmon")
+          #this is the correct test but it is current failing becuase I could not figure out how to list them in descending order. I got the hash of unique ingredients and their frequency - I just could not order them for the life of me.
         end
       end
 

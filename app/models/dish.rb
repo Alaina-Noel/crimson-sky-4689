@@ -13,6 +13,6 @@ class Dish < ApplicationRecord
   end
 
   def self.list_ingredients_uniq_ordered
-    self.joins(:ingredients).group("ingredients.name").limit(3).count
+    self.joins(:ingredients).group("ingredients.name").limit(3).count.keys
   end
 end
